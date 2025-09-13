@@ -1,4 +1,13 @@
 package com.example.ConstructorInjection.Service;
 
-public class CyclingCoach {
+import org.springframework.stereotype.Component;
+
+@Component
+public class CyclingCoach implements Coach{
+
+
+    @Override
+    public String getWorkout() {
+        return "cycle for 30 mins";
+    }
 }
