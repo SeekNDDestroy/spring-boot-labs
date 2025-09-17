@@ -20,7 +20,7 @@ public class Employee {
     @Column(name="last_name")
     private String lastName;
 
-    
+
 
 
     @Column(name="email")
@@ -66,5 +66,15 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
