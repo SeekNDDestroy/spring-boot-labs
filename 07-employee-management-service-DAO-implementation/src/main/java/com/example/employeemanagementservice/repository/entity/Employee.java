@@ -22,6 +22,9 @@ public class Employee {
     @Column(name="department")
     private String department;
 
+    public Employee() {
+    }
+
     public Employee(String firstName, String lastName, String email, String department) {
         this.firstName = firstName;
         this.lastName = lastName;

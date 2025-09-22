@@ -2,20 +2,18 @@ package com.example.employeemanagementservice.repository.dao;
 
 import com.example.employeemanagementservice.repository.entity.Employee;
 import jakarta.persistence.EntityManager;
-import org.hibernate.annotations.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public class EmployeeServiceImpl implements EmployeeDAO {
+public class EmployeeDAOImpl implements EmployeeDAO {
 
     private EntityManager entityManager;
 
     @Autowired
-    public EmployeeServiceImpl(EntityManager entityManager) {
+    public EmployeeDAOImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
