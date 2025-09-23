@@ -2,6 +2,7 @@ package com.example.employeemanagementservice.repository.service;
 
 import com.example.employeemanagementservice.repository.dao.EmployeeDAO;
 import com.example.employeemanagementservice.repository.entity.Employee;
+import com.example.employeemanagementservice.repository.exception.EmployeeNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,10 @@ public class EmployeeServiceImpl implements  EmployeeSerivce{
     }
 
     @Override
-    public Employee update(Integer id, Employee employee) {
-        return employeeDAO.update(id, employee);
+    public Employee update(Employee employee) {
+        if(employeeDAO.update(employee) == null){
+            throw new EmployeeNotFoundException("employee with the Id does not exist " + employee.getId());
+        }
+        return employeeDAO.update(employee);
     }
 }

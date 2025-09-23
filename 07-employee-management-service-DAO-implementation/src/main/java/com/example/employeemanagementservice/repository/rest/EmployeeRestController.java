@@ -1,9 +1,11 @@
 package com.example.employeemanagementservice.repository.rest;
 import com.example.employeemanagementservice.repository.entity.Employee;
 import com.example.employeemanagementservice.repository.service.EmployeeSerivce;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/employee")
@@ -16,6 +18,7 @@ public class EmployeeRestController {
 
     @PostMapping()
     public Employee saveEmployee(@RequestBody Employee employee){
+        employee.setId(0);
         return employeeSerivce.saveEmployee(employee);
     }
 
@@ -25,9 +28,15 @@ public class EmployeeRestController {
     }
 
     @GetMapping("/{id}")
-    public Employee getEmployeeById(@PathVariable int id){
-        return employeeSerivce.findEmployeeById(id)
-                .orElseThrow(()-> new RuntimeException("employee not found"));
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable int id){
+        Optional<Employee> employee = employeeSerivce.findEmployeeById(id);
+
+        if(employee.isPresent()){
+            return ResponseEntity.ok(employee.get());
+        }
+        else{
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/delete/{id}")

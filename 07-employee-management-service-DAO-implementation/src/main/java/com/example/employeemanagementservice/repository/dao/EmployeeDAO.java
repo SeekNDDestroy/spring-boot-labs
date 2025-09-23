@@ -10,5 +10,5 @@ public interface EmployeeDAO {
     Optional<Employee> findById(Integer id);
     List<Employee> getAll();
     void delete(Integer id);
-    Employee update(Integer id, Employee employee);
+    Employee update(Employee employee);
 }

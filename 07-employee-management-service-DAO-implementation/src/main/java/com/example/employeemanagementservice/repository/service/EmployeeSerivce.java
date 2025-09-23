@@ -10,5 +10,5 @@ public interface EmployeeSerivce {
     Optional<Employee> findEmployeeById(Integer id);
     List<Employee> getAllEmployees();
     void delete(Integer id);
-    Employee update(Integer id, Employee employee);
+    Employee update(Employee employee);
 }
