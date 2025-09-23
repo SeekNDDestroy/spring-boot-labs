@@ -3,6 +3,8 @@ import com.example.employeemanagementservice.repository.entity.Employee;
 import com.example.employeemanagementservice.repository.service.EmployeeSerivce;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/employee")
 public class EmployeeRestController {
@@ -15,6 +17,11 @@ public class EmployeeRestController {
     @PostMapping()
     public Employee saveEmployee(@RequestBody Employee employee){
         return employeeSerivce.saveEmployee(employee);
+    }
+
+    @GetMapping()
+    public List<Employee> getAllEmployees(){
+        return employeeSerivce.getAllEmployees();
     }
 
     @GetMapping("/{id}")
