@@ -5,6 +5,8 @@ import com.example.employee_manager_dao.entity.Employee;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
@@ -21,5 +23,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee registerNewEmployee(Employee employee) {
         employee.setId(null);
         return employeeDAO.save(employee);
+    }
+
+    @Override
+    public Optional<Employee> findEmployeeById(Integer id) {
+        return employeeDAO.findById(id);
     }
 }
