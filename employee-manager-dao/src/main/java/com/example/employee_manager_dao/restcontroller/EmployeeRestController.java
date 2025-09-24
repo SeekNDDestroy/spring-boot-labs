@@ -20,7 +20,7 @@ public class EmployeeRestController {
 
     @PostMapping()
     public ResponseEntity<Employee> createNewEmployee(@RequestBody Employee employee){
-        employeeService.registerNewEmployee(employee);
-        return ResponseEntity.ok(employee);
+        Employee savedEmployee = employeeService.registerNewEmployee(employee);
+        return ResponseEntity.ok(savedEmployee);
     }
 }
