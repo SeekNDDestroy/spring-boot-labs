@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -33,5 +34,11 @@ public class EmployeeRestController {
         else{
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<Employee>> getAllEmployees(){
+        List<Employee> allEmployees =  employeeService.findAllEmployees();
+        return ResponseEntity.ok(allEmployees);
     }
 }

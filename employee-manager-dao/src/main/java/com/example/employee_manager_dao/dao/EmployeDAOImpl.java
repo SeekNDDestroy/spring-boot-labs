@@ -2,8 +2,10 @@ package com.example.employee_manager_dao.dao;
 
 import com.example.employee_manager_dao.entity.Employee;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -25,5 +27,11 @@ public class EmployeDAOImpl implements EmployeeDAO{
     public Optional<Employee> findById(Integer id) {
         Employee fetchedEmployee = entityManager.find(Employee.class, id);
         return Optional.ofNullable(fetchedEmployee);
+    }
+
+    @Override
+    public List<Employee> findAll() {
+        TypedQuery<Employee> query = entityManager.createQuery("FROM Employee ", Employee.class);
+        return query.getResultList();
     }
 }
