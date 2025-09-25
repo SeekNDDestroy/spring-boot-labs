@@ -8,6 +8,10 @@ import java.util.Optional;
 public interface EmployeeService {
     Employee registerNewEmployee(Employee employee);
 
+    Optional<Employee> updateEmployee(Integer id, Employee employee);
+
     Optional<Employee> findEmployeeById(Integer id);
     List<Employee> findAllEmployees();
+
+    boolean deleteEmployee(int id);
 }

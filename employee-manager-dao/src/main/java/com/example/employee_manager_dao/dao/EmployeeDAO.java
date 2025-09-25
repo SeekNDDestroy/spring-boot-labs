@@ -8,6 +8,10 @@ import java.util.Optional;
 public interface EmployeeDAO {
     Employee save(Employee employee);
 
+    Optional<Employee> update(Integer id, Employee employee);
+
     Optional<Employee> findById(Integer id);
     List<Employee> findAll();
+
+    boolean deleteById(int id);
 }
