@@ -13,5 +13,5 @@ public interface EmployeeService {
     Optional<Employee> findEmployeeById(Integer id);
     List<Employee> findAllEmployees();
 
-    boolean deleteEmployee(int id);
+    void deleteEmployee(int id);
 }

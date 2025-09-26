@@ -13,5 +13,5 @@ public interface EmployeeDAO {
     Optional<Employee> findById(Integer id);
     List<Employee> findAll();
 
-    boolean deleteById(int id);
+    void deleteById(int id);
 }

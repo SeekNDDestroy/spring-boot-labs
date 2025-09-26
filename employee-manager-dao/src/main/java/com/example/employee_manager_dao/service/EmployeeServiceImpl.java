@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
-
 @Service
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
@@ -44,7 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public boolean deleteEmployee(int id) {
-        return employeeDAO.deleteById(id);
+    public void deleteEmployee(int id) {
+        employeeDAO.deleteById(id);
     }
 }

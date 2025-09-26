@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/employees")
 public class EmployeeRestController {
 
@@ -54,9 +55,7 @@ public class EmployeeRestController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEmployeeById(@PathVariable  int id){
-        if(employeeService.deleteEmployee(id)){
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
+        employeeService.deleteEmployee(id);
+        return ResponseEntity.noContent().build();
     }
 }

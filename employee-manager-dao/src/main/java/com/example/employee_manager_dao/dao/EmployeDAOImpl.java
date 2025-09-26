@@ -53,10 +53,9 @@ public class EmployeDAOImpl implements EmployeeDAO{
     }
 
     @Override
-    public boolean deleteById(int id) {
+    public void deleteById(int id) {
         Query query = entityManager.createQuery("DELETE FROM Employee e WHERE e.id = : id");
         query.setParameter("id", id);
        int deletedCount =  query.executeUpdate();
-       return deletedCount > 0;
     }
 }
