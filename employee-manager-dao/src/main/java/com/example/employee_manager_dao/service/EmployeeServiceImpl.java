@@ -2,6 +2,7 @@ package com.example.employee_manager_dao.service;
 
 import com.example.employee_manager_dao.dao.EmployeeDAO;
 import com.example.employee_manager_dao.entity.Employee;
+import com.example.employee_manager_dao.exception.EmployeeNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -27,25 +28,25 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Optional<Employee> updateEmployeeDetails(Integer id, Employee employee) {
+    public Employee updateEmployeeDetails(Integer id, Employee employee) {
         Optional<Employee> existingEmployee = employeeDAO.findById(id);
         if(existingEmployee.isPresent()){
             employee.setId(id);
-            Employee updatedEmployee = employeeDAO.save(employee);
-            return Optional.of(updatedEmployee);
+            return employeeDAO.save(employee);
         }else{
-            return Optional.empty();
+            throw new EmployeeNotFoundException("employee with id " + id + " not found, no uptake took place");
         }
     }
 
-//    @Override
-//    public Optional<Employee> updateEmployee( Integer id, Employee employee) {
-//        return employeeDAO.update(id, employee);
-//    }
-
     @Override
-    public Optional<Employee> findEmployeeById(Integer id) {
-        return employeeDAO.findById(id);
+    public Employee findEmployeeById(Integer id) {
+        Optional<Employee> fetchedEmployee = employeeDAO.findById(id);
+        if(fetchedEmployee.isPresent()){
+            return fetchedEmployee.get();
+        }
+        else{
+            throw new EmployeeNotFoundException("employee with id " + id + " not found");
+        }
     }
 
     @Override
