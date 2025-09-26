@@ -27,9 +27,21 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Optional<Employee> updateEmployee( Integer id, Employee employee) {
-        return employeeDAO.update(id, employee);
+    public Optional<Employee> updateEmployeeDetails(Integer id, Employee employee) {
+        Optional<Employee> existingEmployee = employeeDAO.findById(id);
+        if(existingEmployee.isPresent()){
+            employee.setId(id);
+            Employee updatedEmployee = employeeDAO.save(employee);
+            return Optional.of(updatedEmployee);
+        }else{
+            return Optional.empty();
+        }
     }
+
+//    @Override
+//    public Optional<Employee> updateEmployee( Integer id, Employee employee) {
+//        return employeeDAO.update(id, employee);
+//    }
 
     @Override
     public Optional<Employee> findEmployeeById(Integer id) {

@@ -25,22 +25,6 @@ public class EmployeDAOImpl implements EmployeeDAO{
     }
 
     @Override
-    public Optional<Employee> update(Integer id, Employee employee) {
-        Optional<Employee> fetchedEmployeeOptional = findById(id);
-        if(fetchedEmployeeOptional.isPresent()){
-            Employee fetchedEmployee = fetchedEmployeeOptional.get();
-            fetchedEmployee.setId(id);
-            fetchedEmployee.setFirstName(employee.getFirstName());
-            fetchedEmployee.setLastName(employee.getLastName());
-            fetchedEmployee.setDepartment(employee.getDepartment());
-            Employee updatedEmployee = entityManager.merge(fetchedEmployee);
-            return Optional.of(updatedEmployee);
-        }else{
-            return fetchedEmployeeOptional;
-        }
-    }
-
-    @Override
     public Optional<Employee> findById(Integer id) {
         Employee fetchedEmployee = entityManager.find(Employee.class, id);
         return Optional.ofNullable(fetchedEmployee);

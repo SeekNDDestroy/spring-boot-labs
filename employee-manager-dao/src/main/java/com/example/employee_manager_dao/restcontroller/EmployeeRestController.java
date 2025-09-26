@@ -27,13 +27,11 @@ public class EmployeeRestController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable Integer id, @RequestBody Employee employee){
-        Optional<Employee> updatedEmployee = employeeService.updateEmployee(id, employee);
+        Optional<Employee> updatedEmployee =  employeeService.updateEmployeeDetails(id, employee);
         if(updatedEmployee.isPresent()){
             return ResponseEntity.ok(updatedEmployee.get());
         }
-        else{
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/{id}")
