@@ -2,6 +2,8 @@ package com.example.employee_manager_dao.restcontroller;
 
 import com.example.employee_manager_dao.entity.Employee;
 import com.example.employee_manager_dao.service.EmployeeService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +24,7 @@ public class EmployeeRestController {
     @PostMapping()
     public ResponseEntity<Employee> createNewEmployee(@RequestBody Employee employee){
         Employee savedEmployee = employeeService.registerNewEmployee(employee);
-        return ResponseEntity.ok(savedEmployee);
+        return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
