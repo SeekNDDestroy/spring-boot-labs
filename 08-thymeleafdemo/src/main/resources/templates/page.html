@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form style="padding: 10px; margin: 10px" th:action="@{/onSubmit}" method="GET">
+
+    <h1>user form</h1>
+    <input type="text" name="firstName" placeholder="first name" >
+
+    <br>
+
+    <input type="text" name="lastName" placeholder="last name">
+
+    <br>
+
+    <input type="number" name="age" placeholder="age">
+
+    <br>
+
+    <input type="submit" name="submit">
+
+    </form>
+
+
+    <form style="padding: 10px; margin: 10px" th:action="@{/onSubmitOne}" method="GET">
+
+        <h1>user form (HttpServletRequest)</h1>
+        <input type="text" name="firstName" placeholder="first name">
+
+        <br>
+
+        <input type="text" name="lastName" placeholder="last name">
+
+        <br>
+
+        <input type="number" name="age" placeholder="age">
+
+        <br>
+
+        <input type="submit" name="submit">
+
+    </form>
+
+
+
+<form style="padding: 10px; margin: 10px" th:action="@{/onSubmitTwo}" method="GET">
+
+    <h1>user form (@RequestParam)</h1>
+    <input type="text" name="firstName" placeholder="first name">
+
+    <br>
+
+    <input type="text" name="lastName" placeholder="last name">
+
+    <br>
+
+    <input type="number" name="age" placeholder="age">
+
+    <br>
+
+    <input type="submit" name="submit">
+
+</form>
+
+</body>
+</html>
